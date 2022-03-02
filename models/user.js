@@ -1,7 +1,13 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt')
-var userSchema = new Schema({
+// var mongoose = require('mongoose')
+// var Schema = mongoose.Schema;
+// var bcrypt = require('bcrypt')
+
+import mongoose from 'mongoose'
+import bcrypt from 'bcrypt'
+
+const Schema = mongoose.Schema
+
+const userSchema = new Schema({
     name: {
         type: String,
         require: true
@@ -42,4 +48,5 @@ userSchema.methods.comparePassword = function (passw, cb) {
     })
 }
 
-module.exports = mongoose.model('User', userSchema)
+//module.exports = mongoose.model('User', userSchema)
+export default mongoose.model('User', userSchema)

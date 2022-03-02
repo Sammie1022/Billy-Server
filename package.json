@@ -1,8 +1,9 @@
 {
   "name": "flutterauth",
   "version": "1.0.0",
-  "description": "Authentication for flutter apps",
+  "description": "",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server",
     "dev": "cross-env NODE_ENV=development nodemon server"
