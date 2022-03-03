@@ -1,6 +1,6 @@
-const express = require('express')
-const actions = require('../methods/actions')
-const router = express.Router()
+// const express = require('express')
+// const actions = require('../methods/actions')
+// const router = express.Router()
 
 
 // router.get('/', (req, res) => {
@@ -23,4 +23,4 @@ const router = express.Router()
 // //@route Get/ getinfo
 // router.get('/getinfo', actions.getinfo)
 
-module.exports = router
+// module.exports = router
