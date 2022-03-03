@@ -20,4 +20,5 @@ const getUser = async (req, res) => {
 
   res.status(200).send({ value: user })
 }
+
 export { getQuestionsFromOffice }

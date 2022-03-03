@@ -1,7 +1,7 @@
 // const express = require('express')
 // const { getQuestionsFromOffice } = require('../methods/faqs')
 import express from 'express'
-import { getQuestionsFromOffice } from '../methods/Faqs.js'
+import { getQuestionsFromOffice } from '../methods/faqs.js'
 const router = express.Router()
 
 router.route('/getquestionsfromoffice').post(getQuestionsFromOffice)
