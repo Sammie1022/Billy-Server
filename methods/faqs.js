@@ -30,14 +30,20 @@ const getOffices = async (req, res) => {
 }
 
 const editOffice = async (req, res) => {
-  const { officeName, location, officeHours, officeEmail, token } = req.body
+  const {
+    officeName,
+    newOfficeName,
+    location,
+    officeHours,
+    officeEmail,
+    token,
+  } = req.body
 
   try {
-    console.log(req.body)
     await Faqs.findOneAndUpdate(
       { office_name: officeName },
       {
-        office_name: officeName,
+        office_name: newOfficeName,
         location,
         office_hours: officeHours,
         office_email: officeEmail,
