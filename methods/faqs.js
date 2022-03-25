@@ -91,10 +91,71 @@ const deleteOffice = async (req, res) => {
     return res.json({ status: 'error', value: 'Error' })
   }
 }
+
+const addQuestion = async (req, res) => {
+  const { officeName, question, answer, imagePath, token } = req.body
+
+  try {
+    console.log(req.body)
+    await Faqs.findOneAndUpdate(
+      { office_name: officeName },
+      { $push: { questions: { question, answer, image_path: imagePath } } }
+    )
+
+    return res.json({ status: 'ok', value: 'Question added' })
+  } catch (error) {
+    console.log(error)
+    return res.json({ status: 'error', value: 'Error' })
+  }
+}
+
+const deleteQuestion = async (req, res) => {
+  const { officeName, question, token } = req.body
+
+  try {
+    await Faqs.findOneAndUpdate(
+      { office_name: officeName },
+      { $pull: { questions: { question: question } } }
+    )
+
+    return res.json({ status: 'ok', value: 'Question deleted' })
+  } catch (error) {
+    console.log(error)
+    return res.json({ status: 'error', value: 'Error' })
+  }
+}
+
+const editQuestion = async (req, res) => {
+  const { officeName, oldQuestion, newQuestion, answer, imagePath, token } =
+    req.body
+
+  try {
+    console.log(req.body)
+    await Faqs.findOneAndUpdate(
+      { office_name: officeName, 'questions.question': oldQuestion },
+      {
+        $set: {
+          'questions.$.question': newQuestion,
+          'questions.$.answer': answer,
+          'questions.$.image_path': imagePath,
+        },
+      }
+    )
+
+    return res.json({ status: 'ok', value: 'Question edited' })
+  } catch (error) {
+    console.log(error)
+    return res.json({ status: 'error', value: 'Error' })
+  }
+}
+
 export {
   getQuestionsFromOffice,
   getOffices,
   editOffice,
   addOffice,
   deleteOffice,
+  addQuestion,
+  deleteQuestion,
+  editQuestion,
 }

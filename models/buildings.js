@@ -3,9 +3,9 @@ import mongoose from 'mongoose'
 const buildingSchema = new mongoose.Schema({
   building_name: {
     type: String,
-    require: true,
+    required: true,
   },
-  image_path: { type: String, require: true },
+  image_path: { type: String, required: true },
   floors: [
     {
       floor_number: {

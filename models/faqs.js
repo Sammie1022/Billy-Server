@@ -1,11 +1,17 @@
 import mongoose from 'mongoose'
 
 const faqSchema = new mongoose.Schema({
-  office_name: { type: String, require: true },
-  location: { type: String, require: true },
-  office_hours: { type: String, require: true },
-  office_email: { type: String, require: true },
-  questions: { type: Array },
+  office_name: { type: String, required: true },
+  location: { type: String, required: true },
+  office_hours: { type: String, required: true },
+  office_email: { type: String, required: true },
+  questions: [
+    {
+      question: { type: String },
+      answer: { type: String },
+      image_path: { type: String },
+    },
+  ],
 })
 
 export default mongoose.model('Faqs', faqSchema)
