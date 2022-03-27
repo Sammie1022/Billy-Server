@@ -5,6 +5,7 @@ const faqSchema = new mongoose.Schema({
   location: { type: String, required: true },
   office_hours: { type: String, required: true },
   office_email: { type: String, required: true },
+  image_path: { type: String, required: true },
   questions: [
     {
       question: { type: String },

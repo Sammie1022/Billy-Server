@@ -16,6 +16,7 @@ import bodyParser from 'body-parser'
 import faqsRouter from './routes/faqs.js'
 import buildingsRouter from './routes/buildings.js'
 import aboutRouter from './routes/about.js'
+import signinRouter from './routes/signin.js'
 
 connectDB()
 
@@ -32,6 +33,7 @@ app.use(bodyParser.json())
 app.use(faqsRouter)
 app.use(buildingsRouter)
 app.use(aboutRouter)
+app.use(signinRouter)
 app.use(passport.initialize())
 
 //require('./config/passport')(passport)

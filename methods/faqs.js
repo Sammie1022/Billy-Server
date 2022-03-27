@@ -10,12 +10,6 @@ const getQuestionsFromOffice = async (req, res) => {
   res.status(200).send(faq)
 }
 
-const addQuestionToOffice = async (req, res) => {
-  const { officeName } = req.body
-
-  res.status(200).send('')
-}
-
 const getOffices = async (req, res) => {
   const { token } = req.body
 
@@ -36,6 +30,7 @@ const editOffice = async (req, res) => {
     location,
     officeHours,
     officeEmail,
+    imagePath,
     token,
   } = req.body
 
@@ -47,6 +42,7 @@ const editOffice = async (req, res) => {
         location,
         office_hours: officeHours,
         office_email: officeEmail,
+        image_path: imagePath,
       }
     )
     return res.json({ status: 'ok', value: 'Office updated' })
@@ -57,7 +53,8 @@ const editOffice = async (req, res) => {
 }
 
 const addOffice = async (req, res) => {
-  const { officeName, location, officeHours, officeEmail, token } = req.body
+  const { officeName, location, officeHours, officeEmail, imagePath, token } =
+    req.body
 
   try {
     const existing = await Faqs.find({ office_name: officeName })
@@ -71,6 +68,7 @@ const addOffice = async (req, res) => {
       location,
       office_hours: officeHours,
       office_email: officeEmail,
+      image_path: imagePath,
     })
     return res.json({ status: 'ok', value: 'Office added' })
   } catch (error) {
